@@ -17,8 +17,6 @@ def steward(config_file_path:str, ukb_deepvariant_germline_variant_caller_path:s
     # get paramters from the config.json
     with open(config_file_path, 'r') as config_f:
         config_d = json.load(config_f)
-    task_id            = config_d['taskId']
-    analysis_record_id = config_d['analysisRecordId']
     # make the params.json file
     params_d = {
         'fasta'      : config_d['ukbParams']['fasta'],
