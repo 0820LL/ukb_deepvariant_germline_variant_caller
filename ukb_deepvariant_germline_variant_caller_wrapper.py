@@ -34,10 +34,11 @@ def steward(config_file_path:str, ukb_deepvariant_germline_variant_caller_path:s
     time.sleep(10)
     # send the result files 
     feedback_dict = {
-        'uuid'          : config_d['uuid'],
-        'ukbId'         : config_d['ukbId'],
-        'ukbToolsCode'  : config_d['ukbToolsCode'],
-        'ukbToolName'   : config_d['ukbToolName'],
+        'uuid'            : config_d['uuid'],
+        'ukbId'           : config_d['ukbId'],
+        'ukbToolsCode'    : config_d['ukbToolsCode'],
+        'ukbToolName'     : config_d['ukbToolName'],
+        'pipeline'        : 'ukb',
         'analysisStatus'  : '',
         'startDate'       : time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()),
         'endDate'         : '',
@@ -157,7 +158,7 @@ def main() -> None:
     ukb_deepvariant_germline_variant_caller_path = args.ukb_deepvariant_germline_variant_caller_path
     send_message_script = args.send_message_script
     # logging
-    log_file = '{}/ukb_bwa.log'.format(os.path.dirname(config_file_path))
+    log_file = '{}/ukb_deepvariant_germline_variant_caller.log'.format(os.path.dirname(config_file_path))
     logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     steward(config_file_path, ukb_deepvariant_germline_variant_caller_path, send_message_script)
 
